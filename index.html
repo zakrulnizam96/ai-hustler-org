@@ -171,6 +171,56 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             display: none;
         }
+
+        .slider {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    background: #222;
+    color: #fff;
+    text-align: center;
+}
+
+.slide img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    font-size: 24px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
     </style>
 </head>
 
@@ -248,6 +298,43 @@
         </ul>
     </section>
 
+     <section id="testimonials">
+        <h2>Student Yang Dah Berjaya</h2>
+        <div class="slider">
+            <div class="slides">
+
+                <div class="slide">
+                    <img src="https://zakrulnizam96.github.io/ai-hustler/img/ss1.jpg" alt="Aisyah Testimoni">
+                    <p>Best student ai Hustler! RM 3K sebulan</p>
+                </div>
+                <div class="slide">
+                    <img src="https://zakrulnizam96.github.io/ai-hustler/img/ss6.jpg" alt="Saiful Testimoni">
+                    <p>Betul bro ni cakap, 30% ilmu 70% usaha yang gila b*bi mesti jadi punya!
+                    </p>
+                </div>
+                <div class="slide">
+                    <img src="https://zakrulnizam96.github.io/ai-hustler/img/ss2.jpg" alt="Aiman Testimoni">
+                    <p>Student dah masuk income 1 minggu lepas buat</p>
+                </div>
+                <div class="slide">
+                    <img src="https://zakrulnizam96.github.io/ai-hustler/img/ss3.jpg" alt="Saiful Testimoni">
+                    <p>RM 179 dah balik modal lepas belajar ai Hustler!</p>
+                </div>
+                <div class="slide">
+                    <img src="https://zakrulnizam96.github.io/ai-hustler/img/ss4.jpg" alt="Saiful Testimoni">
+                    <p>Student paling pantas generate income!</p>
+                </div>
+                <div class="slide">
+                    <img src="https://zakrulnizam96.github.io/ai-hustler/img/ss5.jpg" alt="Saiful Testimoni">
+                    <p>Betul! Kena push kaw kaw macam bro ni.Affiliate memang susah, tapi lagi susah kalau takde ilmu!
+                    </p>
+                </div>
+            </div>
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+    </section>
+
     <section id="purchase">
         <h2>Dapatkan Sekarang!</h2>
         <h3><span class="original-price">RM 89</span> <br> <span class="promo-price">RM 59</span></h3>
@@ -292,6 +379,26 @@
         // Call showPopup every 10 seconds
         setInterval(showPopup, 10000); // Adjust the interval time as needed (10000ms = 10 seconds)
     </script>
+
+    <script>
+    const slides = document.querySelector('.slides');
+    const slide = document.querySelectorAll('.slide');
+    let index = 0;
+
+    document.querySelector('.next').addEventListener('click', () => {
+        index = (index + 1) % slide.length;
+        updateSlide();
+    });
+
+    document.querySelector('.prev').addEventListener('click', () => {
+        index = (index - 1 + slide.length) % slide.length;
+        updateSlide();
+    });
+
+    function updateSlide() {
+        slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+</script>
 
 
 </body>
